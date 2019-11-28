@@ -1,0 +1,93 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Threading;
+
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main()
+        {
+            Console.Write("Skriv dit navn: ");
+            string name = Console.ReadLine();
+            Console.WriteLine("Hej " + name);
+            Console.Write("Hvor gammel er du: ");
+            string age = Console.ReadLine();
+            Console.WriteLine("Hej " + name + " du er " + age);
+            Console.Write("Skal vi lege en leg: ");
+            string svar = Console.ReadLine();
+            if (svar == "ja"){
+                Console.WriteLine("Okay... ");
+                Console.WriteLine("Gæt mit navn :");
+                string secretWord = "Oscar";
+                string guess = Console.ReadLine();
+                int guessCount = 0;
+                int guessLimit = 10;
+                bool outOfGuesses = false;
+                while (guess != secretWord && !outOfGuesses)
+                {
+                    if (guessCount < guessLimit)
+                    {
+                        Console.Write("Gæt igen: ");
+                        guess = Console.ReadLine();
+                        guessCount++;
+                    }
+                    else
+                    {
+                        outOfGuesses = true;
+                    }
+
+                }
+                if (outOfGuesses)
+                {
+                    Console.Write("Du tabte!");
+                }
+                else
+                {
+                    Console.Write("Det er rigtigt!");
+                }
+
+                Console.ReadLine();
+                spoerg(name);
+                leg();
+            }
+            else 
+            {
+                Console.Write("Øv det var ærgelgt...");
+            }
+            leg();
+            Thread.Sleep(2000);
+            Main();
+        }
+        static void spoerg(string name)
+        {
+            Console.WriteLine("Hvor bor du henne: ");
+            string by = Console.ReadLine();
+            Console.WriteLine("Jeg bor også i " + by);
+            Console.Write("Hvad hedder din bedste ven: ");
+            string ven = Console.ReadLine();
+            Console.WriteLine(name + " hils " + ven);
+            
+            
+        }
+        static void leg()
+        {
+            Console.WriteLine("Kender du Roser er røde legen: ");
+            string ved = Console.ReadLine();
+            Console.WriteLine(ved + " Okay, du skal bare svare på mine spørgsmål...");
+            Console.WriteLine("Hvad er din ynglings farve: ");
+            string farve = Console.ReadLine();
+            Console.WriteLine("Vælg et udsagnsord");
+            string udsagnsord = Console.ReadLine();
+            Console.WriteLine("Hvem er din ynglings skuespiller: ");
+            string skuespiller = Console.ReadLine();
+            Console.WriteLine("Roses are " + farve);
+            Console.WriteLine("Violets are " + udsagnsord);
+            Console.WriteLine("I love " + skuespiller);
+        }
+    }
+}
